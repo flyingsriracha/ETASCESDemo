@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ETAS CI 2.0 Design System - Local Manrope Fonts */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/manrope-latin-400-normal.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/manrope-latin-600-normal.woff') format('woff');
+  font-display: swap;
+}
+
+:root {
+  /* ========================================
+     ETAS CI 2.0 Design System
+     Based on ui-bundle-etas-ci-2.0
+     ======================================== */
+  --font-size: 16px;  /* Base font size from ui-bundle */
+  
+  /* ETAS CI 2.0 Colors - from ui-bundle */
+  --surface-50: #FAFAFA;
+  --gray-900: #5A646E;
+  --etas-blue-900: #164293;
+  --purple-900: #89037A;
+  --success: #039C7D;
+  --error: #E5004A;
+  --warning: #FCCD22;
+  --text-color: #333;
+  --text-color-light: #5d5d5d;
+  --text-color-muted: #8e8e8e;
+  
+  /* Base colors mapped to ETAS CI 2.0 system */
+  --background: #fff;
+  --foreground: #333;
+  --card: #ffffff;
+  --card-foreground: #333;
+  --popover: #ffffff;
+  --popover-foreground: #333;
+  --primary: #164293;
+  --primary-foreground: #ffffff;
+  --secondary: #89037A;
+  --secondary-foreground: #ffffff;
+  --muted: #FAFAFA;
+  --muted-foreground: #5A646E;
+  --accent: #164293;
+  --accent-foreground: #ffffff;
+  --destructive: #E5004A;
+  --destructive-foreground: #ffffff;
+  --border: rgba(222, 224, 226, 1);
+  --input: transparent;
+  --input-background: #ffffff;
+  --switch-background: #cbced4;
+  --ring: #164293;
+  
+  /* ETAS CI 2.0 Typography Scale - from ui-bundle */
+  --text-xs: 14px;
+  --line-height-xs: 22px;
+  --text-s: 16px;
+  --line-height-s: 24px;
+  --text-m: 16px;
+  --line-height-m: 24px;
+  --text-l: 18px;
+  --line-height-l: 28px;
+  --text-xl: 20px;
+  --line-height-xl: 28px;
+  --text-2xl: 24px;
+  --line-height-2xl: 32px;
+  --text-3xl: 28px;
+  --line-height-3xl: 36px;
+  --text-4xl: 32px;
+  --line-height-4xl: 40px;
+  --text-5xl: 36px;
+  --line-height-5xl: 44px;
+  
+  /* Font Weights - ETAS CI 2.0 */
+  --font-weight-normal: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 600;
+  
+  /* Letter Spacing */
+  --letter-spacing: normal;
+  
+  /* Compact Spacing Grid (8px base, tightened by 20%) */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 10px;
+  --spacing-4: 12px;
+  --spacing-5: 16px;
+  --spacing-6: 20px;
+  --spacing-8: 26px;
+  --spacing-10: 32px;
+  --spacing-12: 38px;
+  --spacing-16: 51px;
+  
+  /* Component-specific sizing - Corporate Design System */
+  --button-height: 2.5rem; /* 40px - matches corporate standard */
+  --button-padding-top: 0.5rem; /* 8px */
+  --button-padding-bottom: 0.5rem; /* 8px */
+  --button-padding-left: 1rem; /* 16px */
+  --button-padding-right: 1rem; /* 16px */
+  --input-height: 2.375rem; /* 38px */
+  --header-height: 3.5rem; /* 56px - matches corporate standard */
+  --card-padding: 1rem; /* 16px */
+  --section-padding: 2rem; /* 32px */
+  --chat-bubble-padding: 0.5rem; /* 8px */
+  
+  /* Chart colors */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  
+  /* Radius - ETAS CI 2.0 */
+  --radius: 50px; /* Button border-radius from ui-bundle */
+  --radius-sm: 3px;
+  --radius-md: 8px;
+  --radius-lg: 20px;
+  
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #5A646E;
+  --sidebar-primary: #164293;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #FAFAFA;
+  --sidebar-accent-foreground: #5A646E;
+  --sidebar-border: rgba(90, 100, 110, 0.15);
+  --sidebar-ring: #164293;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: var(--letter-spacing);
+  }
+  
+  .font-mono {
+    font-family: 'Fira Mono', monospace;
+  }
+}
+
+/* Base typography */
+@layer base {
+  h1 {
+    font-size: var(--text-2xl);
+    line-height: var(--line-height-2xl);
+    font-weight: var(--font-weight-medium);
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    line-height: var(--line-height-xl);
+    font-weight: var(--font-weight-medium);
+  }
+
+  h3 {
+    font-size: var(--text-l);
+    line-height: var(--line-height-l);
+    font-weight: var(--font-weight-medium);
+  }
+
+  h4 {
+    font-size: var(--text-m);
+    line-height: var(--line-height-m);
+    font-weight: var(--font-weight-medium);
+  }
+
+  p {
+    font-size: var(--text-m);
+    line-height: var(--line-height-m);
+    font-weight: var(--font-weight-normal);
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Gradient utility for ETAS header */
+.gradient-etas {
+  background: linear-gradient(to right, #164293, #89037A);
+}
+
+/* Ensure smooth navigation without scroll jumps */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent layout shift during navigation */
+body {
+  overflow-x: hidden;
+}

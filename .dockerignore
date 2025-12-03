@@ -1,0 +1,17 @@
+node_modules
+dist
+.git
+.gitignore
+.env
+.DS_Store
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+*.md
+docs
+archives
+evaluationResult_Torque_Demo_afterOpt
+evaluationResult_Torque_Demo_beforeOpt
+run-website.command
+run-website-windows.bat
+run-website.sh

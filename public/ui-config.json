@@ -1,0 +1,109 @@
+{
+  "version": "1.0",
+  "config": {
+    "theme": {
+      "darkMode": "light",
+      "colors": {
+        "primary": "#164293",
+        "primaryForeground": "#ffffff",
+        "secondary": "#89037A",
+        "secondaryForeground": "#ffffff",
+        "background": "#FAFAFA",
+        "foreground": "#5A646E",
+        "card": "#ffffff",
+        "cardForeground": "#5A646E",
+        "popover": "#ffffff",
+        "popoverForeground": "#5A646E",
+        "muted": "#FAFAFA",
+        "mutedForeground": "#5A646E",
+        "accent": "#164293",
+        "accentForeground": "#ffffff",
+        "success": "#039C7D",
+        "error": "#E5004A",
+        "warning": "#FCCD22",
+        "destructive": "#E5004A",
+        "destructiveForeground": "#ffffff",
+        "border": "rgba(90, 100, 110, 0.15)",
+        "input": "transparent",
+        "inputBackground": "#ffffff",
+        "ring": "#164293",
+        "etasBlue": "#164293",
+        "etasPurple": "#89037A",
+        "surface50": "#FAFAFA",
+        "gray900": "#5A646E"
+      },
+      "typography": {
+        "fontFamily": "Manrope, sans-serif",
+        "monoFontFamily": "Fira Mono, monospace",
+        "baseFontSize": 14,
+        "fontWeights": {
+          "normal": 400,
+          "medium": 600,
+          "bold": 800
+        },
+        "letterSpacing": "-0.01em",
+        "lineHeights": {
+          "xs": "16px",
+          "s": "18px",
+          "m": "20px",
+          "l": "22px",
+          "xl": "24px",
+          "2xl": "32px",
+          "3xl": "36px",
+          "4xl": "44px",
+          "5xl": "56px"
+        }
+      },
+      "spacing": {
+        "1": "4px",
+        "2": "8px",
+        "3": "10px",
+        "4": "12px",
+        "5": "16px",
+        "6": "20px",
+        "8": "26px",
+        "10": "32px",
+        "12": "38px",
+        "16": "51px"
+      },
+      "borderRadius": {
+        "sm": "calc(8px - 4px)",
+        "md": "calc(8px - 2px)",
+        "lg": "8px",
+        "xl": "calc(8px + 4px)"
+      }
+    },
+    "application": {
+      "apiEndpoints": {
+        "streamUrl": "/api/chat",
+        "syncUrl": "/api/chat-sync"
+      },
+      "modelName": "Phi-4-mini-reasoning",
+      "featureFlags": {
+        "enableCalibrationAgent": true,
+        "enableSWDevAgent": true,
+        "enableAURAOrchestrator": true,
+        "enableDataLogging": true,
+        "enableVirtualCalibration": true,
+        "enableRTACarCloud": true,
+        "enableComponentLibrary": true
+      },
+      "defaultScreen": "welcome",
+      "animationSpeed": 1.0
+    },
+    "layout": {
+      "defaultChatDockHeight": 200,
+      "panelSizes": {
+        "calibrationSuite": 50,
+        "virtualCalibration": 50,
+        "dataLogging": 50,
+        "auraOrchestrator": 50
+      },
+      "collapsibleBehavior": {
+        "autoMinimizeOnChatFocus": true
+      }
+    }
+  },
+  "timestamp": 1699999999999
+}
+

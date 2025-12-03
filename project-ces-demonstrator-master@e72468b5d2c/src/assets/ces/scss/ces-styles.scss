@@ -1,0 +1,362 @@
+@mixin chat-dialog {
+    background-color: var(--theme-surface-color);
+    padding: var(--spacing-s) var(--spacing-m) ;
+    border-radius: var(--global-border-radius);
+    border: var(--panel-content-border);
+    margin-right: var(--spacing-s);
+}
+
+.cui-icon {
+    &-database:before {
+        content: "\ea8f";
+    }
+
+    &-cpu:before {
+        content: "\ea72";
+    }
+
+    &-calibration-suite:before {
+        content: "\ed20";
+    }
+
+    &-close:before {
+        content: "\eddb";
+    }
+
+    &-submenu:before {
+        content: "\eab4";
+    }
+
+    &-chat-send:before {
+        content: "\ec47";
+    }
+}
+
+.cui-header {
+    &-avatar-image {
+        background: url("../images/jc-avatar.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size:cover;
+    }
+
+    &-avatar-initials {
+        display: none;
+    }
+}
+
+
+
+.ces {
+    &-dashboard {
+        // Styles for CES Dashboard
+        // padding-top: var(--spacing-4xl);
+
+        &-card {
+            width: 15rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            &-image-wrapper {
+                display: flex;
+                vertical-align: center;
+                align-items: center;
+                border-radius: var(--border-radius-4);
+                padding: var(--spacing-m);
+
+                svg {
+                    width: 60%;
+                    height: auto;
+                    margin: 0 auto;
+                    object-fit: contain;
+                }
+
+                &.ai-calibration-suite {
+                    background: var(--core-blue-50);
+                    color: var(--core-blue-900);
+                }
+
+                &.vecu-calibration {
+                    background: var(--core-purple-50);
+                    color: var(--core-purple-900);
+                }
+
+                &.fleet-logger-data-analysis {
+                    background: var(--core-turquoise-50);
+                    color: var(--core-turquoise-900);
+                }
+
+                &.azure-marketplace {
+                    background: var(--core-surface-50);
+                    color: var(--core-turquoise-900);
+                    padding-top: var(--spacing-l);
+                    padding-bottom: var(--spacing-l);
+                }
+            }
+
+            &-content {
+                display: flex;
+                // justify-content: center;
+                gap: var(--spacing-l);
+                align-items: stretch;
+            }
+
+            .p-card-header {
+                display: flex;
+                justify-content: center;
+
+            }
+
+            .p-card-title {
+                margin-bottom: var(--spacing-l);
+                flex-grow: 1;
+            }
+
+            .p-card-content {
+                padding-top: 0;
+            }
+
+            .p-card-body {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+            }
+
+            .p-card-footer {
+
+            }
+        }
+    }
+
+    // AI chat
+    &-ai-chat {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        height: 100%;
+
+        &-dialog {
+            //height: 100%;
+
+
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom: none;
+
+//            overflow-y: auto;
+
+            &-header {
+                @include chat-dialog;
+                position: sticky;
+                top: 0;
+                display: flex;
+                justify-content: space-between;
+                border-bottom: none;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &-title,
+            &-output-title {
+                font: var(--text-semibold-s);
+            }
+
+            &-settings {
+                span {
+                    margin-left: var(--spacing-s);
+                    font-size: var(--global-icon-size-large)
+                }
+            }
+
+            &-content {
+                overflow-y: auto;
+                flex-grow: 2;
+                @include chat-dialog;
+                border-top: none;
+                border-bottom: none;
+                border-radius: 0;
+                height: 1rem;
+            }
+        }
+
+        &-bubble {
+            border-radius: var(--global-border-radius);
+            padding: var(--spacing-s) var(--spacing-m);
+            margin: 0 0 var(--spacing-xl) 0;
+            border: 1px solid transparent;
+            position: relative;
+
+                            margin-right: calc(var(--spacing-s) + 2rem);
+                margin-left: calc(var(--spacing-s) + 2rem);
+
+            &::after {
+                content: '';
+                display: block;
+                width: 2rem;
+                height: 2rem;
+                border: 1px solid transparent;
+                border-radius: 50%;
+                position: absolute;
+            }
+
+            &.agent {
+                background-color: var(--core-blue-50);
+                border-color: var(--core-blue-200);
+                margin-right: calc(var(--spacing-s) + 2rem);
+                margin-left: calc(var(--spacing-s) + var(--spacing-4xl));
+
+                &::after {
+                    top: var(--spacing-xxs);
+                    right: calc(0rem - 2rem - var(--spacing-s));
+                    background: url(../images/etas-ai-bot.svg) no-repeat center center;
+                    background-size: cover;
+                    border-radius: 0;
+                }
+            }
+
+            &.user {
+                background-color: transparent;
+                border: var(--panel-content-border); //??
+                border-width: 0;
+                margin-left: calc(var(--spacing-s) + 2rem);
+
+                &::after {
+                    top: var(--spacing-xxs);
+                    left: calc(0rem - 2rem - var(--spacing-s));
+                    border-color: var(--core-surface-100);
+                    background: url(../images/jc-avatar.png) no-repeat center center;
+                    background-size: cover;
+                }
+            }
+
+            &.action {
+                padding-top:0;
+                display: flex;
+                gap: var(--spacing-xs);
+
+                &::after {
+                    display: none;
+                }
+            }
+
+            &.progress {
+                display: flex;
+                justify-content: center;
+                padding-top:0;
+                gap: var(--spacing-xs);
+
+                &::after {
+                    display: none;
+                }
+            }
+
+            &.assets {
+                display: flex;
+                gap: var(--spacing-xs);
+            }
+        }
+
+        &-footer {
+            @include chat-dialog;
+            padding: var(--spacing-s) var(--spacing-m);
+            margin-right: var(--spacing-s);
+            // border: var(--panel-content-border);
+            // border-radius: var(--global-border-radius);
+            border-top: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            background: var(--theme-surface-color);
+            
+            &-user-input {
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 6rem;
+                resize: none;
+                border: var(--panel-content-border);
+
+                &-actions {
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                }
+
+                &-send {
+                    position: absolute;
+                    right: 0.5rem;
+                    top: -3rem;
+                    z-index: 2;
+                }
+            }
+        }
+
+        &-modal {
+            &-image-container {
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        &-asset {
+            &-thumbnail {
+                width: 25%;
+                height: auto;
+                object-fit: cover;
+                border: var(--panel-content-border);
+                border-radius: var(--border-radius-4);
+                cursor: zoom-in;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        .p-fileupload-advanced {
+            width:100%;
+        }
+    }
+
+    // Page: Calibration Suite
+    &-calibration-suite {
+        height: calc(100% - 2px);
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        &-content {
+            flex-grow: 2;
+        }
+
+        &-chat {
+            width: 100%;
+        }
+
+        &-output {
+            padding: var(--spacing-s) var(--spacing-m);
+            margin-left: var(--spacing-s);
+        }
+
+        .p-splitter {
+            border: none;
+        }
+    }
+}
+
+app-ai-calibration-suite,
+app-vecu-calibration {
+    height: calc(100vh - var(--header-height) - var(--footer-height) - 3rem - 1px);
+    max-height: calc(100vh - var(--header-height) - var(--footer-height) - 3rem - 1px);
+    display: block;
+}
+
+// .cui-content {
+//     overflow: hidden;
+//     height: calc(100vh - var(--header-height) - var(--footer-height));
+// }
