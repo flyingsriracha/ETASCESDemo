@@ -1,0 +1,95 @@
+<div class="ces-ai-chat">
+    <!-- <div class="ces-ai-chat-dialog"> -->
+        <header class="ces-ai-chat-dialog-header">
+            <span class="ces-ai-chat-dialog-title">AI chat</span>
+            <div class="ces-ai-chat-dialog-settings">
+                <span class="cui-icon-submenu"></span>
+                <span class="cui-icon-settings"></span>
+                <span class="cui-icon-close"></span>
+            </div>
+        </header>
+        <div class="ces-ai-chat-dialog-content">
+            <ng-container *ngFor="let message of chatContent">
+                <!-- messages -->
+                <div class="ces-ai-chat-bubble {{message.actor}}">
+                    {{message.message}}
+                </div>
+                
+                <!-- assets -->
+                <div class="ces-ai-chat-bubble assets" *ngIf="message.assets && message.assets.length > 0">
+                    <ng-container *ngFor="let asset of message.assets">
+                        <ng-container [ngSwitch]="asset.type">
+                            <div class="ces-ai-chat-asset-thumbnail image" *ngSwitchCase="'image'">
+                                <img src="{{ asset.url }}" alt="{{ asset.altText || '' }}" class="ces-ai-chat-asset-image" (click)="showDialog(asset.url, asset.altText)"/>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+
+                <!-- action buttons -->
+                <div class="ces-ai-chat-bubble action" *ngIf="message.actions && message.actions.length > 0 && stepNr === message.step">
+                    <ng-container *ngFor="let action of message.actions">
+                        <p-button 
+                            [severity]="action.severity" 
+                            [label]="action.label" (onClick)="(action.command && action.command()) || (action.nextStep && getNextStep(action.nextStep))"
+                            [disabled]="stepNr !== message.step"></p-button>
+                    </ng-container>
+                </div>
+
+                <!-- components -->
+                <div class="ces-ai-chat-bubble component" *ngIf="message.components && message.components.length > 0">
+                    <ng-container *ngFor="let component of message.components">
+                        <ng-container [ngSwitch]="component.type">
+                            <ng-container *ngSwitchCase="'file-upload'">
+                                <p-fileUpload 
+                                    name="demo[]" 
+                                    url="" 
+                                    (onUpload)="onUpload($event)" 
+                                    [multiple]="true" 
+                                    accept="image/*"
+                                    chooseLabel="Add file"
+                                    chooseIcon="cui-icon-plus"
+                                    uploadIcon="cui-icon-upload"
+                                    uploadStyleClass="p-button-secondary"
+                                    cancelIcon="cui-icon-cancel"
+                                    cancelStyleClass="p-button-secondary">
+                                    <ng-template pTemplate="empty">
+                                        <span class="p-fileupload-template-message">Drag and drop files to here to upload.</span>
+                                    </ng-template>
+                                    <ng-template pTemplate="content">
+                                        <ul *ngIf="uploadedFiles.length">
+                                            <li *ngFor="let file of uploadedFiles">
+                                                {{ file.name }} - {{ file.size }} bytes
+                                            </li>
+                                        </ul>
+                                    </ng-template>
+                                </p-fileUpload>
+                            </ng-container>
+                            <!-- <ng-container *ngSwitchCase="'input'">
+
+                            </ng-container> -->
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </ng-container>
+
+            <div class="ces-ai-chat-bubble progress" *ngIf="showSpinner">
+                <p-progressSpinner styleClass="p-progress-spinner-medium"></p-progressSpinner>
+            </div>
+        </div>
+    <footer class="ces-ai-chat-footer">
+        <form name="user-input">
+            <textarea pInputTextarea class="ces-ai-chat-footer-user-input" placeholder="Ask the agent"></textarea>
+            <div class="ces-ai-chat-footer-user-input-actions">
+                <p-button icon="cui-icon-chat-send" styleClass="ces-ai-chat-footer-user-input-send"></p-button>
+            </div>
+        </form>
+    </footer>
+</div>
+
+<!-- dialog-->
+<p-dialog [(visible)]="dialogVisible" [modal]="true" [style]="{width: '94vw'}" header="{{dialogImageAlt}}" draggable="false">
+    <div class="ces-ai-chat-modal-image-container">
+        <img [src]="dialogImageSrc" [alt]="dialogImageAlt"/>
+    </div>
+</p-dialog>

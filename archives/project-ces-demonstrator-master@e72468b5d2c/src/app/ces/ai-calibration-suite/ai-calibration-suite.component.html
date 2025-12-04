@@ -1,0 +1,21 @@
+<section class="ces-calibration-suite">
+    <div class="ces-calibration-suite-intro">
+        <h1>AI Calibration Suite</h1>
+        <p>All calibration steps and tools in one workflow - assited by artifical intelligence.</p>
+    </div>
+   <div class="ces-calibration-suite-content">
+        <p-splitter [style]="{ height: '100%' }" styleClass="">
+            <ng-template pTemplate>
+                <div class="ces-calibration-suite-chat">
+                    <app-ai-chat></app-ai-chat>
+                </div>
+            </ng-template>
+            <ng-template pTemplate>
+                <div class="ces-calibration-suite-output">
+                    <header>
+                        <span class="ces-ai-chat-dialog-output-title">AI output</span>
+                    </header>
+                </div>
+            </ng-template>
+        </p-splitter>
+    </div>

@@ -44,7 +44,6 @@ export const ETASHeader: React.FC<ETASHeaderProps> = ({
         
         {/* Azure branding */}
         <div className="flex items-center gap-2">
-          <span className="text-white/90 text-xs">Powered by</span>
           <img 
             src={azureLogo}
             alt="Azure"
@@ -60,7 +59,7 @@ export const ETASHeader: React.FC<ETASHeaderProps> = ({
       
       {/* Title - Centered - 25% larger font, responsive */}
       <h1 className="text-white absolute left-1/2 transform -translate-x-1/2 whitespace-nowrap px-4 text-[20px] sm:text-[22px] md:text-[23px] lg:text-[24px]">
-        Powered by ETAS AI and Cloudification: Transforming the Automotive Ecosystem
+        ETAS AI and Cloudification: Transforming the Automotive Ecosystem
       </h1>
       
       {/* Actions - Right aligned */}
