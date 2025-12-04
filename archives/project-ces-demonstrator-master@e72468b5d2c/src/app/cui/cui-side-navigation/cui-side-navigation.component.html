@@ -1,0 +1,49 @@
+<nav class="cui-side-navigation" *ngIf="sideNavigationItems.length">
+    <div class="cui-side-navigation-toggle-wrapper">
+        <p-button icon="cui-icon-side-nav-open" (onClick)="toggleSideNavigationPin($event)"></p-button>
+    </div>
+    <ul class="cui-side-navigation-body">
+        <ng-container *ngFor="let sideNavigationItem of sideNavigationItems">
+            <ng-container *ngTemplateOutlet="sideNavigationItem.children ? menuItem : simpleItem; context: { $implicit: sideNavigationItem }"></ng-container>
+        </ng-container>
+    </ul>
+</nav>
+
+<ng-template #simpleItem let-sideNavigationItem>
+    <li pTooltip="{{ sideNavigationItem.tooltip }}" [showDelay]="tooltipShowDelay" [hideDelay]="tooltipHideDelay"  class="cui-side-navigation-item {{ sideNavigationItem.current ? 'cui-side-navigation-item-active': ''}}" >
+        <ng-container *ngTemplateOutlet="!sideNavigationItem.route.match('^(http(s)?)|(mailto)') ? internalRoute : externalURL; context: { $implicit: sideNavigationItem }"></ng-container>
+    </li>
+
+</ng-template>
+
+<ng-template #menuItem let-sideNavigationItem>
+    <li class="cui-side-navigation-menu">
+        <button class="cui-side-navigation-menu-toggle" (click)="toggleSideNavigationItems($event, sideNavigationItem); openSideNavigation();">
+            <i class="cui-side-navigation-menu-toggle-icon {{ sideNavigationItem.icon }}"></i>
+            <span class="cui-side-navigation-menu-toggle-title">{{ sideNavigationItem.label }}</span>
+            <i class="cui-side-navigation-menu-toggle-expand-icon cui-icon-caret-down" [attr.aria-expanded]="sideNavigationItem.childrenOpen"></i>
+        </button>
+        <div class="cui-side-navigation-menu-dropdown" [attr.aria-hidden]="!sideNavigationItem.childrenOpen">
+            <ul>
+                <ng-container *ngFor="let sideNavigationItem of sideNavigationItem.children">
+                    <ng-container *ngTemplateOutlet="sideNavigationItem.children ? menuItem : null; context: { $implicit: sideNavigationItem }"></ng-container>
+                    <ng-container *ngTemplateOutlet="!sideNavigationItem.children ? simpleItem : null; context: { $implicit: sideNavigationItem }"></ng-container>
+                </ng-container>
+            </ul>
+        </div>
+    </li>
+</ng-template>
+
+<ng-template #externalURL let-sideNavigationItem>
+    <a  href="{{ sideNavigationItem.route }}" [attr.target]="sideNavigationItem.target ? sideNavigationItem.target : null" (click)="closeSideNavigation()">
+        <i *ngIf="sideNavigationItem.icon" class="{{ sideNavigationItem.icon }}"></i>
+        <span>{{ sideNavigationItem.label }}</span>
+    </a>
+</ng-template>
+
+<ng-template #internalRoute let-sideNavigationItem>
+    <a [routerLink]="sideNavigationItem.route" [attr.target]="sideNavigationItem.target ? sideNavigationItem.target : null" ariaCurrentWhenActive="page" (click)="closeSideNavigation()">
+        <i *ngIf="sideNavigationItem.icon" class="{{ sideNavigationItem.icon }}"></i>
+        <span>{{ sideNavigationItem.label }}</span>
+    </a>
+</ng-template>

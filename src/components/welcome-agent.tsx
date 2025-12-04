@@ -83,8 +83,8 @@ export const WelcomeAgent: React.FC<WelcomeAgentProps> = ({ onNavigate }) => {
       </div>
       </SectionContainer>
       
-      {/* Agent Selector - Bottom Left */}
-      <AgentSelector onAgentSelect={handleAgentSelect} activeAgent={activeAgent} />
+      {/* Agent Selector - Bottom Left - Hidden for now */}
+      {/* <AgentSelector onAgentSelect={handleAgentSelect} activeAgent={activeAgent} /> */}
       
       {/* Floating Chat Window */}
       {isChatOpen && activeAgent && (
